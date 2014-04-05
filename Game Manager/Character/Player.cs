@@ -31,10 +31,24 @@ namespace RogueTest
         public short PosX
         {
             get { return this._positionX; }
+            set
+            {
+                if (value >= 0 && value < 80)
+                {
+                    this._positionX = value;
+                }
+            }
         }
         public short PosY
         {
             get { return this._positionY; }
+            set
+            {
+                if (value >= 0 && value < 25)
+                {
+                    this._positionY = value;
+                }
+            }
         }
         public Inventory Inventory
         {
@@ -108,6 +122,33 @@ namespace RogueTest
         }
         #endregion
 
+        public void Draw()
+        {
+            Console.SetCursorPosition(this._positionX, this._positionY);
+            Console.Write("1");
+        }
+
+        public void Move(Direction direction)
+        {
+            switch (direction)
+            {
+                case Direction.Up:
+                    this.PosY--;
+                    break;
+                case Direction.Down:
+                    this.PosY++;
+                    break;
+                case Direction.Left:
+                    this.PosX--;
+                    break;
+                case Direction.Right:
+                    this.PosX++;
+                    break;
+                default:
+                    break;
+            }
+        }
+
         private void InitialiseStats()
         {
             this._str = this._rnd.Next(0, 100);
@@ -116,5 +157,11 @@ namespace RogueTest
             this._end = this._rnd.Next(0, 100);
             this._luc = this._rnd.Next(0, 100);
         }
+    }
+
+    [Flags]
+    public enum Direction
+    {
+        Up, Down, Left, Right
     }
 }

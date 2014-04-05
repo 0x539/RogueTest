@@ -26,10 +26,6 @@ namespace RogueTest
 
             while (this.isActive) 
             {
-                //Probably should update game manager.
-                this._gm.Update();
-                this._sm.Update(this._gm);
-
                 //Then update the screen manager with the updated game manager
                 //This should then mean what is drawn to the screen is up-to-date
 
@@ -40,7 +36,10 @@ namespace RogueTest
                 }
                 else
                 {
-                    this._sm.Draw(key.Key);
+                    //Probably should update game manager.
+                    this._gm.Update(key.Key);
+                    this._sm.Update(this._gm);
+                    this._sm.Draw();
                 }
             }
         }

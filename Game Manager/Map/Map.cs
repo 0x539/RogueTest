@@ -45,12 +45,6 @@ namespace RogueTest
             foreach (string s in this.map) {
                 Console.WriteLine(s);
             }
-
-            Console.WriteLine("Top: " + Console.CursorTop);
-            Console.WriteLine("Left: " + Console.CursorLeft);
-
-            Console.SetCursorPosition(10, 1);
-            Console.Write("1");
         }
     }
 }

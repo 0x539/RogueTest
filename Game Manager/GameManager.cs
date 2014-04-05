@@ -26,9 +26,25 @@ namespace RogueTest
             this._player = new Player();
         }
 
-        public void Update()
+        public void Update(ConsoleKey key)
         {
-            //Update the player
+            switch (key)
+            {
+                case ConsoleKey.W:
+                    this._player.Move(Direction.Up);
+                    break;
+                case ConsoleKey.A:
+                    this._player.Move(Direction.Left);
+                    break;
+                case ConsoleKey.S:
+                    this._player.Move(Direction.Down);
+                    break;
+                case ConsoleKey.D:
+                    this._player.Move(Direction.Right);
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void Draw()
@@ -36,6 +52,10 @@ namespace RogueTest
             Console.Clear();
 
             this._map.draw();
+            this._player.Draw();
+
+            Console.SetCursorPosition(0, 20);
+            Console.WriteLine("PosX: " + this._player.PosX + " PosY: " + this._player.PosY);
         }
     }
 }

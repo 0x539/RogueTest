@@ -24,7 +24,7 @@ namespace RogueTest
             this._screens[2] = new GameScreen(this._gm);
         }
 
-        public void Draw(ConsoleKey key)
+        public void Draw()
         {
             Console.Clear();
             for (int x = 0; x < this._screens.Count(); x++)
