@@ -7,14 +7,19 @@ namespace RogueTest
 {
     class GameManager
     {
+        #region Variables
         bool isActive = true;
 
         Map _map = new Map();
         Player _player;
+        #endregion
+
+        #region Get / Setters
         public Player Player
         {
             get { return this._player; }
         }
+        #endregion
 
         public GameManager()
         {
@@ -26,22 +31,12 @@ namespace RogueTest
             //Update the player
         }
 
-        public void run()
+        public void Draw()
         {
+            Console.Clear();
 
-            while (this.isActive) {
-                Console.Clear();
-
-                this._map.draw();
-
-                Console.WriteLine();
-
-                Console.SetCursorPosition(0, 20);
-                Console.WriteLine("Press any key to continue...");
-            }
-
+            this._map.draw();
         }
-
     }
 }
 

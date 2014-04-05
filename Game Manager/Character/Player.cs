@@ -11,6 +11,7 @@ namespace RogueTest
         private short _positionX;
         private short _positionY;
         private Inventory _inventory;
+        private Random _rnd;
 
         public string Name
         {
@@ -52,22 +53,27 @@ namespace RogueTest
         public int Strength
         {
             get { return this._str; }
+            set { this._str = value; }
         }
         public int Dexterity
         {
             get { return this._dex; }
+            set { this._dex = value; }
         }
         public int Intelligence
         {
             get { return this._int; }
+            set { this._int = value; }
         }
         public int Endurance
         {
             get { return this._end; }
+            set { this._end = value; }
         }
         public int Luck
         {
             get { return this._luc; }
+            set { this._luc = value; }
         }
         #endregion
 
@@ -77,6 +83,7 @@ namespace RogueTest
         #region Constructors
         public Player()
         {
+            this._rnd = new Random();
             this.Name = "";
             this._positionX = 1;
             this._positionY = 1;
@@ -85,6 +92,7 @@ namespace RogueTest
         
         public Player(short x, short y)
         {
+            this._rnd = new Random();
             this.Name = "";
             this._positionX = x;
             this._positionY = y;
@@ -92,6 +100,7 @@ namespace RogueTest
         }
         public Player(string name, short x, short y)
         {
+            this._rnd = new Random();
             this.Name = name;
             this._positionX = x;
             this._positionY = y;
@@ -101,12 +110,11 @@ namespace RogueTest
 
         private void InitialiseStats()
         {
-            Random RNG = new Random();
-            this._str = RNG.Next(0, 100);
-            this._dex = RNG.Next(0, 100);
-            this._int = RNG.Next(0, 100);
-            this._end = RNG.Next(0, 100);
-            this._luc = RNG.Next(0, 100);
+            this._str = this._rnd.Next(0, 100);
+            this._dex = this._rnd.Next(0, 100);
+            this._int = this._rnd.Next(0, 100);
+            this._end = this._rnd.Next(0, 100);
+            this._luc = this._rnd.Next(0, 100);
         }
     }
 }

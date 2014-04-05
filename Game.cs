@@ -16,6 +16,8 @@ namespace RogueTest
         {
             this._gm = new GameManager();
             this._sm = new ScreenManager(this._gm);
+
+            Console.CursorVisible = false;
         }
 
         public void Run()

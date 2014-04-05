@@ -27,6 +27,7 @@ namespace RogueTest
 
         protected void PressAnyKey()
         {
+            Console.WriteLine("--------------------------------------------------");
             Console.WriteLine("--      Press any key to continue               --");
             Console.WriteLine("--------------------------------------------------");
         }
@@ -40,10 +41,28 @@ namespace RogueTest
             Console.WriteLine("--                                              --");
             Console.WriteLine("--       Created By: 0x539                      --");
             Console.WriteLine("--       Twitter: @Aaronought                   --");
-            Console.WriteLine("--------------------------------------------------");
             this.PressAnyKey();
         }
     }
+
+    class InputStatsScreen : Screen
+    {
+        GameManager _gm;
+
+        public InputStatsScreen(GameManager gm)
+        {
+            this._gm = gm;
+        }
+
+        public override void Draw()
+        {
+            Console.Write("Enter your characters name: ");
+            this._gm.Player.Name = Console.ReadLine();
+            this.isActive = false;
+            this.PressAnyKey();
+        }
+    }
+
     class StatsScreen : Screen
     {
         private Player _player;
@@ -62,7 +81,6 @@ namespace RogueTest
             Console.WriteLine("--       Endurance:      {0}\t\t\t--", this._player.Endurance);
             Console.WriteLine("--       Luck:           {0}\t\t\t--", this._player.Luck);
             Console.WriteLine("--                          \t\t\t--");
-            Console.WriteLine("--------------------------------------------------");
             this.PressAnyKey();
         }
     }
@@ -78,7 +96,7 @@ namespace RogueTest
 
         public override void Draw()
         {
-            Console.WriteLine("Game Screen Here!!");
+            this._gm.Draw();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace RogueTest
     class ScreenManager
     {
         public int _menuIndex = 0;
-        Screen[] _menus;
+        Screen[] _screens;
         GameManager _gm;
         Player _player;
 
@@ -18,19 +18,20 @@ namespace RogueTest
             this._player = this._gm.Player;
             
 
-            this._menus = new Screen[2];
-            this._menus[0] = new StatsScreen(this._player);
-            this._menus[1] = new GameScreen(this._gm);
+            this._screens = new Screen[3];
+            this._screens[0] = new InputStatsScreen(this._gm);
+            this._screens[1] = new StatsScreen(this._player);
+            this._screens[2] = new GameScreen(this._gm);
         }
 
         public void Draw(ConsoleKey key)
         {
             Console.Clear();
-            for (int x = 0; x < this._menus.Count(); x++)
+            for (int x = 0; x < this._screens.Count(); x++)
             {
-                if (this._menus[x].isActive)
+                if (this._screens[x].isActive)
                 {
-                    this._menus[x].Draw();
+                    this._screens[x].Draw();
                     break;
                 }
             }
