@@ -7,7 +7,11 @@ namespace RogueTest
 {
     class Tile
     {
-        bool isHabitable;
+        private bool _isHabitable;
+        public bool isHabitable
+        {
+            get { return this._isHabitable; }
+        }
 
         char _character;
         ConsoleColor _colour;
@@ -15,12 +19,41 @@ namespace RogueTest
 
         public Tile(char character)
         {
+            this._isHabitable = true;
+
             this._character = character;
+            this._background = ConsoleColor.Black;
+
+            switch (character)
+            {
+                case '#':
+                    this._isHabitable = false;
+                    this._colour = ConsoleColor.Gray;
+                    break;
+                case '^':
+                    this._isHabitable = false;
+                    this._colour = ConsoleColor.Green;
+                    break;
+                case 'X':
+                    this._colour = ConsoleColor.Red;
+                    break;
+                default:
+                    this._colour = ConsoleColor.Gray;
+                    break;
+            }
         }
 
         public void Draw()
         {
+            
+            Console.ForegroundColor = this._colour;
+            Console.BackgroundColor = this._background;
+
             Console.Write(this._character);
+
+            //Default Colour
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.BackgroundColor = ConsoleColor.Black;
         }
     }
 

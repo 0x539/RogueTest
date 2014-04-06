@@ -43,6 +43,7 @@ namespace RogueTest
             Console.WriteLine("--       Created By: 0x539                      --");
             Console.WriteLine("--       Twitter: @Aaronought                   --");
             this.PressAnyKey();
+            this.isActive = false; ;
         }
     }
 

@@ -16,6 +16,7 @@ namespace RogueTest
         private short _mapPosY;
         private Inventory _inventory;
         private Random _rnd;
+        private Map _map;
 
         public string Name
         {
@@ -37,8 +38,7 @@ namespace RogueTest
             get { return this._positionX; }
             set
             {
-                //At 80 we overflow the console write length.
-                if (value >= 0 && value < 80)
+                if (value >= 0 && value < this._map.MaxX && this._map.map2[this._positionY, value].isHabitable)
                 {
                     this._positionX = value;
                 }
@@ -49,8 +49,7 @@ namespace RogueTest
             get { return this._positionY; }
             set
             {
-                //25 is the bottom of the console window.
-                if (value >= 0 && value < 25)
+                if (value >= 0 && value < this._map.MaxY && this._map.map2[value, this._positionX].isHabitable)
                 {
                     this._positionY = value;
                 }
@@ -101,29 +100,13 @@ namespace RogueTest
         #endregion
 
         #region Constructors
-        public Player()
+        public Player(Map map)
         {
+            this._map = map;
             this._rnd = new Random();
             this.Name = "";
             this._positionX = 1;
             this._positionY = 1;
-            this.InitialiseStats();
-        }
-        
-        public Player(short x, short y)
-        {
-            this._rnd = new Random();
-            this.Name = "";
-            this._positionX = x;
-            this._positionY = y;
-            this.InitialiseStats();
-        }
-        public Player(string name, short x, short y)
-        {
-            this._rnd = new Random();
-            this.Name = name;
-            this._positionX = x;
-            this._positionY = y;
             this.InitialiseStats();
         }
         #endregion

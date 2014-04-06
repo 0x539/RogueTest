@@ -21,7 +21,10 @@ namespace RogueTest
 
         string[] map;
 
-        Tile[,] map2;
+        public Tile[,] map2;
+
+        public int MaxX;
+        public int MaxY;
 
         public Map()
         {
@@ -42,23 +45,22 @@ namespace RogueTest
             };
 
 
-
+            this.MaxX = 20;
+            this.MaxY = this.map.Count();
             this.map2 = new Tile[this.map.Count(), 20];
 
             int x = 0;
             int y = 0;
             foreach (string s in this.map)
             {
-                y = 0;
+                x = 0;
                 foreach (char c in s)
                 {
-                    this.map2[x, y] = new Tile(c);
-                    y++;
+                    this.map2[y, x] = new Tile(c);
+                    x++;
                 }
-                x++;
+                y++;
             }
-
-            x = x;
         }
 
         public void Draw()
