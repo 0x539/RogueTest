@@ -64,7 +64,7 @@ namespace RogueTest
             this._player.Draw();
 
             Console.SetCursorPosition(0, 24);
-            Console.Write("PosX: " + this._player.PosX + " PosY: " + this._player.PosY + " Pressed Key: ");
+            Console.Write("PosX:\t" + this._player.PosX + "\tPosY:\t" + this._player.PosY + "\tPressed Key: ");
         }
     }
 }

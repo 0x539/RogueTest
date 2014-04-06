@@ -26,6 +26,10 @@ namespace RogueTest
 
             switch (character)
             {
+                case '=':
+                    this._isHabitable = false;
+                    this._colour = ConsoleColor.Red;
+                    break;
                 case '#':
                     this._isHabitable = false;
                     this._colour = ConsoleColor.Gray;

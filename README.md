@@ -20,3 +20,8 @@ To Do
 Happy With
 ==
  - Object Collision
+ 
+Needs Work
+==
+ - Map Drawing
+   - Seems to take a while drawing.
