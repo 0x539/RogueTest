@@ -19,10 +19,10 @@ namespace RogueTest
             
 
             this._screens = new Screen[4];
-            this._screens[0] = new MainMenu();
-            this._screens[1] = new InputStatsScreen(this._gm);
-            this._screens[2] = new StatsScreen(this._player);
-            this._screens[3] = new GameScreen(this._gm);
+            //this._screens[0] = new MainMenu();
+            //this._screens[1] = new InputStatsScreen(this._gm);
+            //this._screens[2] = new StatsScreen(this._player);
+            this._screens[0] = new GameScreen(this._gm);
         }
 
         public void Draw()

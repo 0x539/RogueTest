@@ -102,4 +102,12 @@ namespace RogueTest
             this._gm.Draw();
         }
     }
+
+    class TestingScreen : Screen
+    {
+        public override void Draw()
+        {
+
+        }
+    }
 }

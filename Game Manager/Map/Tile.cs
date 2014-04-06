@@ -15,21 +15,15 @@ namespace RogueTest
 
         char _character;
         ConsoleColor _colour;
-        ConsoleColor _background;
 
         public Tile(char character)
         {
             this._isHabitable = true;
 
             this._character = character;
-            this._background = ConsoleColor.Black;
 
             switch (character)
             {
-                case '=':
-                    this._isHabitable = false;
-                    this._colour = ConsoleColor.Red;
-                    break;
                 case '#':
                     this._isHabitable = false;
                     this._colour = ConsoleColor.Gray;
@@ -51,13 +45,12 @@ namespace RogueTest
         {
             
             Console.ForegroundColor = this._colour;
-            Console.BackgroundColor = this._background;
 
             Console.Write(this._character);
 
             //Default Colour
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.BackgroundColor = ConsoleColor.Black;
+            if (Console.ForegroundColor != ConsoleColor.Gray)
+                Console.ForegroundColor = ConsoleColor.Gray;
         }
     }
 
