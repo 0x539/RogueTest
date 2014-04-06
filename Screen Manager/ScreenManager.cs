@@ -7,7 +7,7 @@ namespace RogueTest
 {
     class ScreenManager
     {
-        public int _menuIndex = 0;
+        int _currentMenu = 0;
         Screen[] _screens;
         GameManager _gm;
         Player _player;
@@ -26,16 +26,7 @@ namespace RogueTest
 
         public void Draw()
         {
-            Console.Clear();
-            for (int x = 0; x < this._screens.Count(); x++)
-            {
-                if (this._screens[x].isActive)
-                {
-                    this._screens[x].Draw();
-                    break;
-                }
-            }
-
+            this._screens[this._currentMenu].Draw();
         }
 
         public void Update(GameManager gm)
@@ -43,11 +34,14 @@ namespace RogueTest
             //Take in the new game manager.
             this._gm = gm;
             this._player = this._gm.Player;
-        }
 
-        public static void DrawMainMenu()
-        {
-            new MainMenu().Draw();
+            if (!this._screens[this._currentMenu].isActive)
+            {
+                if (this._screens[this._currentMenu].clearScreen)
+                    Console.Clear();
+
+                this._currentMenu++;
+            }
         }
     }
 }

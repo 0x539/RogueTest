@@ -8,6 +8,7 @@ namespace RogueTest
     class Screen
     {
         public bool isActive = true;
+        public bool clearScreen = true;
 
         public virtual void Draw()
         {
@@ -91,6 +92,7 @@ namespace RogueTest
 
         public GameScreen(GameManager gm) 
         {
+            this.clearScreen = false;
             this._gm = gm;
         }
 

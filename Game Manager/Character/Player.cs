@@ -8,8 +8,12 @@ namespace RogueTest
     class Player
     {
         private string _name;
+
+        //Positions
         private short _positionX;
         private short _positionY;
+        private short _mapPosX;
+        private short _mapPosY;
         private Inventory _inventory;
         private Random _rnd;
 
@@ -33,6 +37,7 @@ namespace RogueTest
             get { return this._positionX; }
             set
             {
+                //At 80 we overflow the console write length.
                 if (value >= 0 && value < 80)
                 {
                     this._positionX = value;
@@ -44,6 +49,7 @@ namespace RogueTest
             get { return this._positionY; }
             set
             {
+                //25 is the bottom of the console window.
                 if (value >= 0 && value < 25)
                 {
                     this._positionY = value;

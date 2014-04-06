@@ -11,6 +11,7 @@ namespace RogueTest
 
         ScreenManager _sm;
         GameManager _gm;
+        ConsoleKey _key;
 
         public Game()
         {
@@ -22,24 +23,20 @@ namespace RogueTest
 
         public void Run()
         {
-            ScreenManager.DrawMainMenu();
-
             while (this.isActive) 
             {
                 //Then update the screen manager with the updated game manager
                 //This should then mean what is drawn to the screen is up-to-date
+                //Probably should update game manager.
+                this._gm.Update(this._key);
+                this._sm.Update(this._gm);
+                this._sm.Draw();
 
-                ConsoleKeyInfo key = Console.ReadKey();
-                if (key.Key == ConsoleKey.Escape)
+                this._key = Console.ReadKey().Key;
+
+                if (this._key == ConsoleKey.Escape)
                 {
                     this.isActive = false;
-                }
-                else
-                {
-                    //Probably should update game manager.
-                    this._gm.Update(key.Key);
-                    this._sm.Update(this._gm);
-                    this._sm.Draw();
                 }
             }
         }

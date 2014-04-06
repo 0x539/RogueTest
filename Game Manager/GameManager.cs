@@ -49,9 +49,11 @@ namespace RogueTest
 
         public void Draw()
         {
-            Console.Clear();
+            //Console.Clear();
 
-            this._map.draw();
+            if (this._map.hasChanged)
+                this._map.Draw();
+
             this._player.Draw();
 
             Console.SetCursorPosition(0, 20);
